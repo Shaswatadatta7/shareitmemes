@@ -74,15 +74,23 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun sharememe(view: View) {
-        val intent=Intent(Intent.ACTION_SEND)
-        intent.putExtra(Intent.EXTRA_TEXT,"Share this url to your friends $currentImage")
-        intent.type="text/plain"
-        val chooser=Intent.createChooser(intent,"Share this meme url to..")
+    fun shareMeme(view: View) {
+        // Create an intent with the action to send content
+        val intent = Intent(Intent.ACTION_SEND)
+
+        // Add the text content to be shared
+        intent.putExtra(Intent.EXTRA_TEXT, "Share this URL with your friends: $currentImage")
+
+        // Set the MIME type of the content to be shared
+        intent.type = "text/plain"
+
+        // Create a chooser to display available sharing options
+        val chooser = Intent.createChooser(intent, "Share this meme URL with...")
+
+        // Start the chooser activity to allow the user to select a sharing option
         startActivity(chooser)
-
-
     }
+
     fun nextmeme(view: View) {
         loadMeme()
 
